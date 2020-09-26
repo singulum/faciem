@@ -174,7 +174,7 @@ jobs:
         with:
           browser: chrome
           start: yarn dev
-          wait-on: 'http://localhost:3000'
+          wait-on: 'http://localhost:3010'
           wait-on-timeout: 120
         env:
           CYPRESS_PROJECT_ID: ${{ secrets.CYPRESS_PROJECT_ID }}
@@ -226,7 +226,7 @@ jobs:
         with:
           browser: firefox
           start: yarn dev
-          wait-on: 'http://localhost:3000'
+          wait-on: 'http://localhost:3010'
           wait-on-timeout: 120
         env:
           CYPRESS_PROJECT_ID: ${{ secrets.CYPRESS_PROJECT_ID }}
