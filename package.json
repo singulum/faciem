@@ -1,0 +1,101 @@
+{
+  "name": "faciem",
+  "author": "@singulum",
+  "license": "MIT",
+  "version": "0.1.0",
+  "scripts": {
+    "dev": "next dev -p 3010",
+    "build": "next build",
+    "start": "next start -p 3010",
+    "type-check": "tsc --pretty --noEmit",
+    "format": "prettier --write \"**/*.{js,ts,tsx}\"",
+    "lint": "eslint . --ext ts --ext tsx --ext js",
+    "e2e": "start-server-and-test dev 3010 'cypress open'",
+    "test": "yarn lint && yarn type-check && yarn test:unit && yarn test:snapshot && yarn test:integration",
+    "test:unit": "jest --testMatch=\"<rootDir>/tests/**/*.test.{ts,tsx}\"",
+    "test:snapshot": "jest --testMatch=\"<rootDir>/stories/storyshots/index.ts\"",
+    "test:integration": "cypress run",
+    "test:integration:chrome": "cypress run --browser chrome",
+    "test:integration:edge": "cypress run --browser edge",
+    "test:integration:firefox": "cypress run --browser firefox",
+    "test:visual": "yarn chromatic",
+    "storybook": "start-storybook -p 6016",
+    "build-storybook": "build-storybook",
+    "chromatic": "yarn exec chromatic",
+    "coverage": "yarn coverage:clean && yarn coverage:init && yarn coverage:unit && yarn coverage:snapshot && yarn coverage:integration",
+    "coverage:clean": "rm -rf .nyc_output coverage || true",
+    "coverage:init": "yarn test:unit --coverage --coverageDirectory=.nyc_output --roots=\"<rootDir>\" --testMatch=\"<rootDir>/fake.test.js\" --coverageReporters=json && mv .nyc_output/coverage-final.json .nyc_output/out.json",
+    "coverage:unit": "yarn test:unit --coverage --coverageDirectory=./coverage/unit",
+    "coverage:snapshot": "yarn test:snapshot --coverage --coverageDirectory=./coverage/snapshot",
+    "coverage:integration": "start-server-and-test 3010 test:integration"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged",
+      "pre-push": "yarn run type-check"
+    }
+  },
+  "lint-staged": {
+    "*.@(ts|tsx)": [
+      "yarn lint",
+      "yarn format"
+    ]
+  },
+  "dependencies": {
+    "next": "latest",
+    "node-fetch": "^2.6.1",
+    "react": "^16.13.1",
+    "react-dom": "^16.13.1"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.11.6",
+    "@cypress/code-coverage": "^3.8.1",
+    "@istanbuljs/nyc-config-typescript": "^1.0.1",
+    "@storybook/addon-a11y": "^6.0.21",
+    "@storybook/addon-actions": "^6.0.21",
+    "@storybook/addon-essentials": "^6.0.21",
+    "@storybook/addon-links": "^6.0.21",
+    "@storybook/addon-storyshots": "^6.0.21",
+    "@storybook/addons": "^6.0.21",
+    "@storybook/react": "^6.0.21",
+    "@testing-library/jest-dom": "^5.11.4",
+    "@testing-library/react": "^11.0.2",
+    "@testing-library/user-event": "^12.1.4",
+    "@types/jest": "^26.0.13",
+    "@types/node": "^14.10.1",
+    "@types/react": "^16.9.27",
+    "@types/testing-library__react": "^10.0.0",
+    "@typescript-eslint/eslint-plugin": "^4.1.1",
+    "@typescript-eslint/parser": "^4.1.1",
+    "babel-jest": "^26.3.0",
+    "babel-loader": "^8.1.0",
+    "babel-plugin-istanbul": "^6.0.0",
+    "chromatic": "^5.1.0",
+    "cypress": "^5.1.0",
+    "eslint": "^6.8.0",
+    "eslint-config-prettier": "^6.10.1",
+    "eslint-plugin-cypress": "^2.11.1",
+    "eslint-plugin-react": "^7.19.0",
+    "fetch-mock": "^9.10.7",
+    "fetch-mock-jest": "^1.3.0",
+    "husky": "^4.2.3",
+    "istanbul-lib-coverage": "^3.0.0",
+    "istanbul-merge": "^1.1.1",
+    "jest": "^26.4.2",
+    "jest-watch-typeahead": "^0.5.0",
+    "lint-staged": "^10.0.10",
+    "node-mocks-http": "^1.9.0",
+    "nyc": "^15.1.0",
+    "prettier": "^2.0.2",
+    "react-is": "^16.13.1",
+    "react-test-renderer": "^16.13.1",
+    "start-server-and-test": "^1.11.3",
+    "ts-jest": "^26.3.0",
+    "typescript": "^4.0.2",
+    "typescript-eslint": "^0.0.1-alpha.0",
+    "vercel": "^20.1.0"
+  },
+  "nyc": {
+    "report-dir": "coverage/integration"
+  }
+}
