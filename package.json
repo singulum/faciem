@@ -4,13 +4,13 @@
   "license": "MIT",
   "version": "0.1.0",
   "scripts": {
-    "dev": "next dev -p 3010",
+    "dev": "next dev -p 3000",
     "build": "next build",
-    "start": "next start -p 3010",
+    "start": "next start -p 3000",
     "type-check": "tsc --pretty --noEmit",
     "format": "prettier --write \"**/*.{js,ts,tsx}\"",
     "lint": "eslint . --ext ts --ext tsx --ext js",
-    "e2e": "start-server-and-test dev 3010 'cypress open'",
+    "e2e": "start-server-and-test dev 3000 'cypress open'",
     "test": "yarn lint && yarn type-check && yarn test:unit && yarn test:snapshot && yarn test:integration",
     "test:unit": "jest --testMatch=\"<rootDir>/tests/**/*.test.{ts,tsx}\"",
     "test:snapshot": "jest --testMatch=\"<rootDir>/stories/storyshots/index.ts\"",
@@ -19,7 +19,7 @@
     "test:integration:edge": "cypress run --browser edge",
     "test:integration:firefox": "cypress run --browser firefox",
     "test:visual": "yarn chromatic",
-    "storybook": "start-storybook -p 6016",
+    "storybook": "start-storybook -p 6006",
     "build-storybook": "build-storybook",
     "chromatic": "yarn exec chromatic",
     "coverage": "yarn coverage:clean && yarn coverage:init && yarn coverage:unit && yarn coverage:snapshot && yarn coverage:integration",
@@ -27,7 +27,7 @@
     "coverage:init": "yarn test:unit --coverage --coverageDirectory=.nyc_output --roots=\"<rootDir>\" --testMatch=\"<rootDir>/fake.test.js\" --coverageReporters=json && mv .nyc_output/coverage-final.json .nyc_output/out.json",
     "coverage:unit": "yarn test:unit --coverage --coverageDirectory=./coverage/unit",
     "coverage:snapshot": "yarn test:snapshot --coverage --coverageDirectory=./coverage/snapshot",
-    "coverage:integration": "start-server-and-test 3010 test:integration"
+    "coverage:integration": "start-server-and-test 3000 test:integration"
   },
   "husky": {
     "hooks": {
