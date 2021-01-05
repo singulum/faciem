@@ -107,14 +107,14 @@ jobs:
           CYPRESS_PROJECT_ID: ${{ secrets.CYPRESS_PROJECT_ID }}
 
       - name: Upload integration test screenshots
-        uses: actions/upload-artifact@v2.1.4
+        uses: actions/upload-artifact@v2.2.2
         if: failure()
         with:
           name: cypress-screenshots
           path: cypress/screenshots
 
       - name: Upload integration test videos
-        uses: actions/upload-artifact@v2.1.4
+        uses: actions/upload-artifact@v2.2.2
         if: failure()
         with:
           name: cypress-videos
@@ -180,14 +180,14 @@ jobs:
           CYPRESS_PROJECT_ID: ${{ secrets.CYPRESS_PROJECT_ID }}
 
       - name: Upload integration test screenshots
-        uses: actions/upload-artifact@v2.1.4
+        uses: actions/upload-artifact@v2.2.2
         if: failure()
         with:
           name: cypress-screenshots-chrome
           path: cypress/screenshots
 
       - name: Upload integration test videos
-        uses: actions/upload-artifact@v2.1.4
+        uses: actions/upload-artifact@v2.2.2
         if: failure()
         with:
           name: cypress-videos-chrome
@@ -232,14 +232,14 @@ jobs:
           CYPRESS_PROJECT_ID: ${{ secrets.CYPRESS_PROJECT_ID }}
 
       - name: Upload integration test screenshots
-        uses: actions/upload-artifact@v2.1.4
+        uses: actions/upload-artifact@v2.2.2
         if: failure()
         with:
           name: cypress-screenshots-firefox
           path: cypress/screenshots
 
       - name: Upload integration test videos
-        uses: actions/upload-artifact@v2.1.4
+        uses: actions/upload-artifact@v2.2.2
         if: failure()
         with:
           name: cypress-videos-firefox
